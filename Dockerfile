@@ -1,26 +1,10 @@
-
-
-
- 
-# Install pip dependencies from requirements
-
-# Set YOUR_NAME environment variable
-
-# Expose the correct port
-
-# Create an entrypoint
-FROM python:3.7
-# Create and set the work directory inside the image named 'app'
-WORKDIR /app
-# Execute a pip install command using the list 'requirements.txt'
+FROM python:3.6
+COPY . . 
 RUN pip install Flask
-# Copy the app file into the image working directory
-COPY app.py .
-# State the listening port for the container. 
-# The app's code does not actually specify the port, so it would be useful to include here.
-EXPOSE 5000
-# Run 'python app.py' on container start-up. This is the main process.
-ENTRYPOINT ["python", "app.py"]
+RUN pip3 install -r requirements.txt
+ENV YOUR_NAME='Neil'
+EXPOSE 5500
+ENTRYPOINT ["python3", "app.py"]
 
 
 
